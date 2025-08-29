@@ -13,8 +13,7 @@ export default function Home() {
       rating: 4.8,
       description:
         "A classic Italian pasta dish with creamy egg sauce, pancetta, and plenty of Parmesan cheese. Simple yet incredibly satisfying.",
-      image:
-        "https://images.unsplash.com/photo-1589308078052-9149f3d7c109?auto=format&fit=crop&w=800&q=80",
+      image: "/src/img/Pasta.png",
     },
     {
       id: 2,
@@ -24,8 +23,7 @@ export default function Home() {
       rating: 4.5,
       description:
         "A refreshing mix of greens, cherry tomatoes, cucumber, and avocado with a light olive oil dressing. Perfect for a healthy lunch.",
-      image:
-        "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=800&q=80",
+      image: "/src/img/Healthy Salad Recipe Card Image.png",
     },
     {
       id: 3,
@@ -35,8 +33,7 @@ export default function Home() {
       rating: 4.9,
       description:
         "A rich and flavorful curry with tender chicken pieces in a golden sauce, served with fluffy rice and fresh cilantro.",
-      image:
-        "https://images.unsplash.com/photo-1604909052743-1c8644e6c184?auto=format&fit=crop&w=800&q=80",
+      image: "/src/img/Freshly Baked Bread Recipe Card Image.png",
     },
     {
       id: 4,
@@ -46,8 +43,7 @@ export default function Home() {
       rating: 5.0,
       description:
         "A rich chocolate cake with layers of ganache and buttercream frosting, topped with fresh berries. Perfect for special occasions.",
-      image:
-        "https://images.unsplash.com/photo-1612197522583-6b5c5f9d6a56?auto=format&fit=crop&w=800&q=80",
+      image: "/src/img/Chocolate Cake Dessert Recipe Card Image (1).png",
     },
   ];
 
@@ -59,7 +55,7 @@ export default function Home() {
         <h3 className="text-2xl font-semibold text-center mb-8">
           Featured Recipes
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {recipes.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}

@@ -7,7 +7,7 @@ export default function Hero() {
     <div
       className="relative bg-cover bg-center h-[400px] flex items-center justify-center text-center"
       style={{
-        backgroundImage: `url('/8e210fd7-e805-40b6-9b1a-715668de24e7.jpeg')`,
+        backgroundImage: `url(homepage.jpeg)`,
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>

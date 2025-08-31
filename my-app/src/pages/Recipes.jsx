@@ -1,6 +1,12 @@
-import Navbar from "components/Navbar";
-import Footer from "components/Footer";
-import RecipeCard from "components/RecipeCard";
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import RecipeCard from '../components/RecipeCard';
+
+// Import images
+import ChocolateCakeImage from '../img/Chocolate Cake Dessert Recipe Card Image (1).png';
+import FreshlyBakedBreadImage from '../img/Freshly Baked Bread Recipe Card Image.png';
+import HealthySaladImage from '../img/Healthy Salad Recipe Card Image.png';
+import PastaImage from '../img/Pasta.png';
 
 const recipes = [
   {
@@ -9,8 +15,9 @@ const recipes = [
     category: "Dessert",
     time: "45 mins",
     rating: "4.8",
+    difficulty: "Medium",
     description: "Rich and moist chocolate cake with creamy frosting",
-    image: "/src/img/Chocolate Cake Dessert Recipe Card Image (1).png"
+    image: ChocolateCakeImage
   },
   {
     id: 2,
@@ -18,8 +25,9 @@ const recipes = [
     category: "Bakery",
     time: "2 hours",
     rating: "4.9",
+    difficulty: "Hard",
     description: "Homemade artisan bread with crispy crust",
-    image: "/src/img/Freshly Baked Bread Recipe Card Image.png"
+    image: FreshlyBakedBreadImage
   },
   {
     id: 3,
@@ -27,8 +35,9 @@ const recipes = [
     category: "Salad",
     time: "15 mins",
     rating: "4.7",
+    difficulty: "Easy",
     description: "Fresh greens with seasonal vegetables and dressing",
-    image: "/src/img/Healthy Salad Recipe Card Image.png"
+    image: HealthySaladImage
   },
   {
     id: 4,
@@ -36,30 +45,28 @@ const recipes = [
     category: "Pasta",
     time: "30 mins",
     rating: "4.6",
+    difficulty: "Easy",
     description: "Classic pasta dish with rich tomato sauce",
-    image: "/src/img/Pasta.png"
+    image: PastaImage
   }
 ];
 
 export default function Recipes() {
   return (
-    <div className="font-sans">
+    <div className="font-sans bg-gray-50 min-h-screen flex flex-col">
       <Navbar />
-      <section className="px-6 py-12 text-center">
-        <h2 className="text-3xl font-bold mb-4">All Recipes</h2>
-        <p className="text-gray-600">
-          Here you'll find a collection of all our delicious recipes.
-        </p>
-      </section>
-      
-      <section className="px-6 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {recipes.map(recipe => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
-          ))}
+      <main className="flex-grow py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            All Recipes
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 lg:gap-8">
+            {recipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))}
+          </div>
         </div>
-      </section>
-      
+      </main>
       <Footer />
     </div>
   );

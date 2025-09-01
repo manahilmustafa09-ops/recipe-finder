@@ -15,4 +15,5 @@ export default function Recipes() {
       <Footer />
     </div>
   );
-}
+}import RecipeCard from "../components/RecipeCard";
+

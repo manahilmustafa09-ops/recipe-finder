@@ -1,6 +1,21 @@
 import { FaStar } from "react-icons/fa";
+import { IoIosHeart } from "react-icons/io";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function RecipeCard({ recipe }) {
+  const AddToFavourites = () => {
+    const saved = JSON.parse(localStorage.getItem("favorites")) || [];
+    const exists = saved.find((item) => item.id === recipe.id);
+      if (!exists) {
+      saved.push(recipe);
+      localStorage.setItem("favorites", JSON.stringify(saved));
+      alert("Recipe added to favourites!")
+    } else {
+      alert("This recipe is already in favorites.")
+    }
+  }
+
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden">
       <img
@@ -23,6 +38,12 @@ export default function RecipeCard({ recipe }) {
         <button className="mt-4 bg-green-700 text-white px-4 py-2 rounded shadow hover:bg-green-800">
           View Recipe
         </button>
+        <button
+            onClick={AddToFavourites}
+            className="btn-fav"
+          >
+            <IoIosHeart /> Add to Favorites
+          </button>
       </div>
     </div>
   );

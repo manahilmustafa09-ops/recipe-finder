@@ -1,16 +1,23 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "pages/Home";
-import Recipes from "pages/Recipes";
-import Favorites from "pages/Favorite";
 
-export default function App() {
+// Import Pages (relative paths)
+import Homepage from "./pages/Homepage";
+import RecipeList from "./pages/RecipeList";
+import RecipeDetail from "./pages/RecipeDetail";
+import RecipePage from "./pages/RecipePage";
+
+function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<Recipes />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/recipes" element={<RecipeList />} />
+        <Route path="/recipes/:id" element={<RecipeDetail />} />
+        <Route path="/recipe-page" element={<RecipePage />} />
       </Routes>
     </Router>
   );
 }
+
+export default App;

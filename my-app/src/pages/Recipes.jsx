@@ -1,5 +1,5 @@
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 
 // Import images
@@ -70,5 +70,5 @@ export default function Recipes() {
       <Footer />
     </div>
   );
-}import RecipeCard from "../components/RecipeCard";
+}
 

@@ -1,6 +1,6 @@
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import Hero from '../components/hero';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 
 // Import images from img folder

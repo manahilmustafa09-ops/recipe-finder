@@ -1,21 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// Import Pages (relative paths)
-import Homepage from "./pages/Homepage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
 import RecipeList from "./pages/RecipeList";
 import RecipeDetail from "./pages/RecipeDetail";
-import RecipePage from "./pages/RecipePage";
+import Favourites from "./pages/Favourites";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/recipes" element={<RecipeList />} />
-        <Route path="/recipes/:id" element={<RecipeDetail />} />
-        <Route path="/recipe-page" element={<RecipePage />} />
-      </Routes>
+      <Navbar />
+      <main className="main-container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recipes" element={<RecipeList />} />
+          <Route path="/recipes/:id" element={<RecipeDetail />} />
+          <Route path="/favourites" element={<Favourites />} />
+        </Routes>
+      </main>
+      <Footer />
     </Router>
   );
 }

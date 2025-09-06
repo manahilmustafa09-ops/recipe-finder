@@ -1,72 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-// 
-import { tryFetch } from "../../utils/tryfetch";
+import { useParams } from "react-router-dom";
 
 
-
-
-function RecipeDetail() {
+export default function RecipeDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const backState = location.state;
-
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    const fetchRecipe = async () => {
-      const apiKey1 = import.meta.env.VITE_SPOONACULAR_API_KEY1;
-      const apiKey2 = import.meta.env.VITE_SPOONACULAR_API_KEY2;
+    const sampleRecipes = [
+      { id: 1, title: "Chicken Biryani", rating: 4.8, image:"https://unsplash.com/photos/a-bowl-of-food-on-a-plate-with-spices-TNNZ8KNPfbY" , description: "A spicy rice dish with tender chicken, aromatic spices, and basmati rice." },
+      { id: 2, title: "Pasta Alfredo", rating: 4.5, image: "https://i.ibb.co/G2zvD0W/pasta.jpg", description: "A creamy pasta dish made with parmesan cheese, butter, and rich white sauce." },
+      { id: 3, title: "Grilled Sandwich", rating: 4.2, image: "https://i.ibb.co/Lv6Zrhp/sandwich.jpg", description: "Crispy bread filled with cheese and veggies, grilled to perfection." }
+    ];
 
-      const url1 = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey1}`;
-      const url2 = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey2}`;
-
-      const data = await tryFetch(url1, url2);
-      setRecipe(data);
-    };
-
-    fetchRecipe();
+    const found = sampleRecipes.find((r) => r.id === parseInt(id));
+    setRecipe(found);
   }, [id]);
 
-  if (!recipe) return <p>Loading...</p>;
+  if (!recipe) return <p>Loading recipe details...</p>;
 
   return (
-    <div className="container"> 
     <div className="recipe-detail">
+      <img src={recipe.image} alt={recipe.title} />
       <h2>{recipe.title}</h2>
-      <img src={recipe.image} alt={recipe.title} width="300" />
-
-      <h3>Ingredients:</h3>
-      <ul>
-        {recipe.extendedIngredients.map((ing) => (
-          <li key={ing.id}>{ing.original}</li>
-        ))}
-      </ul>
-
-      <h3>Instructions:</h3>
-      <p>{recipe.instructions || "No instructions found."}</p>
-
-      <button
-        onClick={() => {
-          if (backState?.fromSearch) {
-            navigate("/", {
-              state: {
-                fromSearch: true,
-                recipes: backState.recipes,
-                query: backState.query,
-              },
-            });
-          } else {
-            navigate("/");
-          }
-        }}
-      >
-        🔙 Back
-      </button>
-    </div>
+      <p>⭐ {recipe.rating}/5</p>
+      <p>{recipe.description}</p>
     </div>
   );
 }
 
-export default RecipeDetail;
